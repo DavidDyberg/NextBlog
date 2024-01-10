@@ -1,15 +1,15 @@
 'use client'
 
-import supabase from "@/lib/supabaseClient"
+import supabase from "@/lib/supabase-client"
 import type { Post } from "@/lib/type-collections"
 import { useCallback, useEffect, useState } from "react"
-import Test from "./post"
+import Test from "./testfetch"
 
 export default function Home() {
   const [posts, setPosts] = useState<Post []>([])
 
   const fetcher = useCallback(async () => {
-    const { data, error } = await supabase.from("posts").select('*');
+    const { data, error } = await supabase.from("posts").select(); console.log(error, data)
 
     if (error) {
       console.log('error:', error);
