@@ -2,6 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import StyledComponentsRegistry from '@/lib/registry'
+import { PageContainer, MainContentContainer } from '@/styles/mainContentContainer'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 
@@ -21,9 +22,13 @@ export default function RootLayout({
     <html lang="en">
       <StyledComponentsRegistry>
         <body className={inter.className}>
-          <Header/>
-          {children}
-          <Footer />
+          <PageContainer>
+            <Header/>
+            <MainContentContainer>
+              {children}
+            </MainContentContainer>
+            <Footer />
+          </PageContainer>
         </body>
       </StyledComponentsRegistry>
     </html>

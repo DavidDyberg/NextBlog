@@ -3,9 +3,7 @@
 import styled from "styled-components";
 
 export const Footer = styled.footer`
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+   margin-top: auto;
     padding: 10px;
     border-top: 2px rgb(203 213 225) solid;
     text-align: center;
