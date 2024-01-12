@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 'use client'
 
 import supabase from "@/lib/supabase-client"
@@ -5,6 +6,8 @@ import type { Post } from "@/lib/type-collections"
 import { useCallback, useEffect, useState } from "react"
 import Test from "./testfetch"
 
+=======
+>>>>>>> main
 export default function Home() {
   const [posts, setPosts] = useState<Post []>([])
 
@@ -24,6 +27,7 @@ export default function Home() {
   }, [fetcher])
 
   return (
+<<<<<<< HEAD
     
     <main> 
         <h1>Home</h1>
@@ -34,6 +38,10 @@ export default function Home() {
       </p>
         
         
+=======
+    <main >
+      <h1>Blog</h1>
+>>>>>>> main
     </main>
   )
 }
