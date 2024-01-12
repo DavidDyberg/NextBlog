@@ -1,15 +1,15 @@
 'use client'
 
 import supabase from "@/lib/supabase-client"
-import type { Post, User } from "@/lib/type-collections"
+import type { Post } from "@/lib/type-collections"
 import { useCallback, useEffect, useState } from "react"
 import Test from "./testfetch"
 
 export default function Home() {
-  const [posts, setPosts] = useState<User []>([])
+  const [posts, setPosts] = useState<Post []>([])
 
   const fetcher = useCallback(async () => {
-    const { data, error } = await supabase.from("users").select('*'); 
+    const { data, error } = await supabase.from("posts").select('*'); 
     console.log(error, data)
 
     if (error) {
@@ -28,8 +28,8 @@ export default function Home() {
     <main> 
         <h1>Home</h1>
         <p>
-        {posts.map((user) => (
-          <Test key={user.id} user={user} />
+        {posts.map((post) => (
+          <Test key={post.id} post={post} />
         ))}
       </p>
         
