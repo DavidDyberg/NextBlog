@@ -1,9 +1,11 @@
-import { Post } from "@/lib/type-collections";
+import { Post, User } from "@/lib/type-collections";
 
-const Test = ({ post }: {post: Post}) => {
+const Test = ({ user }: {user: User}) => {
     return (
         <div>
-            {post.title}
+            {user.username}
+            {user.email}
+            {user.created_at}
         </div>
     )
     
