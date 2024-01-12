@@ -4,6 +4,7 @@ const Test = ({ post }: {post: Post}) => {
     return (
         <div>
             {post.title}
+            {post.created_at}
         </div>
     )
     

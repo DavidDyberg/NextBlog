@@ -2,6 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import StyledComponentsRegistry from '@/lib/registry'
+import ReactQueryProvider from '@/utils/providers'
 import { PageContainer, MainContentContainer } from '@/styles/mainContentContainer'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
@@ -27,7 +28,7 @@ export default function RootLayout({
             <Header/>
             <MainContentContainer>
               <SideBar/>
-              {children}
+               <ReactQueryProvider>{children}</ReactQueryProvider>
             </MainContentContainer>
             <Footer />
           </PageContainer>
