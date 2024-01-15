@@ -2,6 +2,8 @@ import { Post } from "@/lib/type-collections";
 import * as Styles from '@/components/showPosts/Styles.showPosts'
 
 const ShowPosts = ({ post }: {post: Post}) => {
+
+    
     return (
         <Styles.PostsContainer>
             <Styles.Title>{post.title}</Styles.Title>
