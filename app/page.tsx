@@ -2,7 +2,6 @@
 
 import supabase from "@/lib/supabase-client"
 import type { Post } from "@/lib/type-collections"
-import { useCallback, useEffect, useState } from "react"
 import ShowPosts from "@/components/showPosts"
 import { useQuery } from "@tanstack/react-query"
 

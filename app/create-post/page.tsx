@@ -1,11 +1,11 @@
 'use client'
 
 import { useRouter } from "next/navigation"
-import supabase from "@/lib/supabase-client"
 import { Button } from "@/styles/button"
 import { useState } from "react"
 import * as Styles from '@/app/create-post/Styles.createPost'
 import { createPost } from "@/api-routes/posts"
+import { useMutation } from "@tanstack/react-query"
 
 export default function CreatePost () {
     const [title, setTitle] = useState<string>()
@@ -14,25 +14,26 @@ export default function CreatePost () {
 
     const router = useRouter()
 
+    const createPostMutation = useMutation({
+        mutationFn: createPost,
+        onSuccess: () => {
+            setError(null)
+            router.push('/')
+        },
+        onError: (error) => {
+            setError(error.message);
+          },
+    })
+
     const handleSubmit = async (e: any) => {
         e.preventDefault()
 
         if (!title || !body) {
             setError('Fill in all the fields')
-            return
+            return;
         }
         
-        createPost({title, body})
-
-        if (error) {
-            setError('Fill in all the fields')
-        }
-
-        if (createPost) {
-            console.log(createPost)
-            setError(null)
-        }
-        router.push('/')
+        createPostMutation.mutate({title, body})
     }
 
     return (
