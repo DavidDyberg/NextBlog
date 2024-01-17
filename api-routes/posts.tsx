@@ -14,6 +14,8 @@ export const getAllPosts = async () => {
     return data;
   };
 
+
+
   export const createPost = async ({title, body} : {title:string, body:string}) => {
     const newPost = ({title, body})
 
@@ -23,3 +25,22 @@ export const getAllPosts = async () => {
 
        return data
   }
+
+  export const getPost = async (id : string) => {
+    const { data } = await supabase
+        .from('posts')
+        .select()
+        .eq('id', id)
+        .single()
+
+    return data
+}
+
+export const deletePost = async (id: string) => {
+    const {data, error, status} = await supabase
+    .from('posts')
+    .delete()
+    .eq('id', id)
+
+    return {data, error, status}
+}
