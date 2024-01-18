@@ -9,6 +9,9 @@ const DeletePost = styled.button`
     background: none;
 	border: none;
 	cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
 `
 
 export const DeleteButton = ({ id } : { id: string }) => {

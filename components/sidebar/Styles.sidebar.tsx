@@ -43,4 +43,9 @@ export const SidebarItem = styled(Button)`
       padding: 6px 21px;
     }
   `}    
+
+@media (max-width:500px) {
+        font-size: 14px;
+        margin: 2px;
+    }
 `;

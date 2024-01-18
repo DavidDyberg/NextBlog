@@ -17,6 +17,7 @@ export const MainContentContainer = styled.div`
     background: #fae8eb70;
     border-radius: 3px;
     box-shadow: 10px gray;
+    position: relative;
 
     @media (max-width: 900px) {
         display: flex;
