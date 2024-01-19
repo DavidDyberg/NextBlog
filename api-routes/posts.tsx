@@ -26,6 +26,16 @@ export const getAllPosts = async () => {
        return data
   }
 
+  export const editPost = async ({title, body, id} : {title:string, body:string, id:string}) => {
+    const { data } = await supabase
+    .from('posts')
+    .update({title, body})
+    .eq('id', id)
+    .single()
+
+    return data
+  }
+
   export const getPost = async (id : string) => {
     const { data } = await supabase
         .from('posts')

@@ -35,3 +35,9 @@ export const DeleteButton = ({ id } : { id: string }) => {
     </div>
    )
 }
+
+export const EditButton = ({id} : {id: string}) => {
+    const router = useRouter()
+
+
+}
