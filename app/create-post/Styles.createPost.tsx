@@ -1,9 +1,22 @@
 'use client'
 
+import { ChevronLeft } from "lucide-react"
 import styled from "styled-components"
 
+export const BackIcon = styled(ChevronLeft)`
+    color: black;
+    display: flex;
+
+    &:hover {
+        color: grey;
+    }
+`
+
 export const Title = styled.h2`
-    text-align: center;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `
 
 export const Form = styled.form`

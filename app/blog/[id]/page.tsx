@@ -3,6 +3,7 @@ import { Post } from "@/lib/type-collections";
 import { DeleteButton } from "./buttons";
 import * as Styles from '@/app/blog/[id]/Styles.ShowSinglePost'
 import { format } from "date-fns";
+import Link from "next/link";
 
 const ShowSinglePost = async ({ params } : { params: { id: string } } ) => {    
     const { id } = params
@@ -28,7 +29,7 @@ const ShowSinglePost = async ({ params } : { params: { id: string } } ) => {
                 <Styles.CreatedAt>Created at:</Styles.CreatedAt> 
                 <Styles.Date>{currentDate}</Styles.Date>
             </Styles.CreatedAtWrapper>
-            
+            <Link href={'/blog/' + id + '/edit'}><Styles.EditIcon></Styles.EditIcon></Link>
             <DeleteButton id={id}/>
         </Styles.SinglePostContainer>
     )

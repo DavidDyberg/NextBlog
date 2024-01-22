@@ -17,6 +17,7 @@ const InfoText = styled.p`
   @media (max-width: 500px) {
     margin:0;
     margin-top: 20px;
+    font-size: 16px;
   }
 `
 

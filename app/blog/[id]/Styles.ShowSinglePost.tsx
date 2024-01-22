@@ -1,5 +1,6 @@
 'use client'
 import styled from "styled-components"
+import { Pencil } from 'lucide-react';
 
 export const SinglePostContainer = styled.div`
     display: flex;
@@ -41,4 +42,15 @@ export const CreatedAt = styled.p`
 
 export const Date = styled.p`
     color: grey;
+`
+
+export const EditIcon = styled(Pencil)`
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: black;
+
+    &:hover {
+        color: green;
+    }
 `

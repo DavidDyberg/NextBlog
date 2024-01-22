@@ -4,6 +4,7 @@ import { editPost } from '@/api-routes/posts'
 import * as Styles from '@/app/create-post/Styles.createPost'
 import { Button } from '@/styles/button'
 import { useMutation } from '@tanstack/react-query'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
@@ -21,7 +22,7 @@ export default function EditPost ({ params } : { params: { id: string } } ) {
         mutationFn: editPost,
         onSuccess: () => {
             setError(null)
-            router.push('/' + id )
+            router.push('/blog/')
         },
         onError: (error) => {
             setError(error.message);
@@ -41,7 +42,11 @@ export default function EditPost ({ params } : { params: { id: string } } ) {
 
     return(
         <div>
-            <h2>Edit Post</h2>
+            
+            <Styles.Title>
+                <Link href={'/blog/' + id}><Styles.BackIcon/></Link>
+                Edit Post
+            </Styles.Title>
             <Styles.Form onSubmit={handleSubmit}>
                 <label htmlFor="title">Title:</label>
                 <Styles.Input 
