@@ -2,7 +2,12 @@
 
 import styled from "styled-components"
 
+export const Title = styled.h2`
+    text-align: center;
+`
+
 export const Form = styled.form`
+    height: 400px;
     background-color: #fff;
     padding: 20px;
     max-width: 480px;
@@ -10,6 +15,9 @@ export const Form = styled.form`
     border-radius: 6px;
     display: flex;
     flex-direction: column;
+    border: 1px solid rgb(203 213 225);
+    border-radius: 3px;
+    margin-bottom: 20px;
 `
 
 export const Input = styled.input`
@@ -23,4 +31,5 @@ export const Input = styled.input`
 export const ErrorMessage = styled.p`
     text-align: center;
     color: red;
+    margin-top: 100px;
 `

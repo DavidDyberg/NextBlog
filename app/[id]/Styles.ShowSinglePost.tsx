@@ -15,7 +15,7 @@ export const Title = styled.h2`
 `
 
 export const BodyText = styled.p`
-    width: 500px;
+    max-width: 500px;
     line-height: 1.5;
 
     @media (max-width:500px) {

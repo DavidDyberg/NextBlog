@@ -29,7 +29,7 @@ export default function CreatePost () {
         e.preventDefault()
 
         if (!title || !body) {
-            setError('Fill in all the fields')
+            setError('Please fill in all the fields')
             return;
         }
         
@@ -38,7 +38,7 @@ export default function CreatePost () {
 
     return (
         <div>
-            <h2>Create Post</h2>
+            <Styles.Title>Create Post</Styles.Title>
             <Styles.Form onSubmit={handleSubmit}>
                 <label htmlFor="title">Title:</label>
                 <Styles.Input 

@@ -14,7 +14,6 @@ export const MainContentContainer = styled.div`
     margin: 50px;
     display: grid;
     grid-template-columns: 1fr 4fr;
-    background: #fae8eb70;
     border-radius: 3px;
     box-shadow: 10px gray;
     position: relative;
@@ -25,6 +24,8 @@ export const MainContentContainer = styled.div`
     }
 
     @media (max-width: 500px) {
-        margin: 0;
+        margin: 5px;
+        margin-top: 40px;
+        border: none;
     }
 `

@@ -17,6 +17,5 @@ export const Button = styled.button<{ $primary?: boolean; }>`
 
     &:hover {
         padding: 6px 22px;
-        
     }
 `

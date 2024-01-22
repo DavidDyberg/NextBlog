@@ -1,9 +1,13 @@
 'use client'
-
+import styled from "styled-components"
 import supabase from "@/lib/supabase-client"
 import type { Post } from "@/lib/type-collections"
 import ShowPosts from "@/components/showPosts"
 import { useQuery } from "@tanstack/react-query"
+
+const BlogTitle = styled.h1`
+  margin-left: 10px;
+`
 
 export default function Home() {
   const { data: posts } = useQuery<Post[]>({
@@ -16,18 +20,15 @@ export default function Home() {
 
       return data as Post[]
     },
-    
   })
 
   return (
     
     <main> 
-        <h1>Blog</h1>
-        <p>
+        <BlogTitle>Blog</BlogTitle>
         {posts?.map((post) => (
           <ShowPosts key={post.id} post={post} />
         ))}
-      </p>
     </main>
   )
 }
