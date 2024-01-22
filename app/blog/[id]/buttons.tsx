@@ -38,7 +38,7 @@ export const DeleteButton = ({ id } : { id: string }) => {
             return console.log({ error, status })
         }
 
-        router.push('/')
+        router.push('/blog')
     }
 
    return(

@@ -5,16 +5,16 @@ const SideBar = () => {
     return (
         <Styles.SidebarContainer>
             <Link href="/">
-              <Styles.SidebarItem $primary>Blog</Styles.SidebarItem>
+              <Styles.SidebarItem>Home</Styles.SidebarItem>
             </Link>
-            <Link href="/about">
-              <Styles.SidebarItem $primary>About</Styles.SidebarItem>
+            <Link href="/blog">
+              <Styles.SidebarItem>Blog</Styles.SidebarItem>
             </Link>
             <Link href="/create-post">
-              <Styles.SidebarItem $primary>Create Post</Styles.SidebarItem>
+              <Styles.SidebarItem>Create Post</Styles.SidebarItem>
             </Link>
             <Link href="/login">
-              <Styles.SidebarItem $primary>Login</Styles.SidebarItem>
+              <Styles.SidebarItem>Login</Styles.SidebarItem>
             </Link>
         </Styles.SidebarContainer>
     )

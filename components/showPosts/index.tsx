@@ -7,7 +7,7 @@ const ShowPosts = ({ post }: {post: Post}) => {
     const currentDate = format(new Date(post.created_at), 'MMMM do yyyy, h:mm:ss a');
 
     return (
-        <Styles.PostLink href={'/' + post.id}>
+        <Styles.PostLink href={'/blog/' + post.id}>
             <Styles.PostsContainer>
                 <Styles.Title>{post.title}</Styles.Title>
                 <Styles.CreatedAt>{currentDate}</Styles.CreatedAt>

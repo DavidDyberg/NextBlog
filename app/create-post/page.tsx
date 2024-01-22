@@ -18,7 +18,7 @@ export default function CreatePost () {
         mutationFn: createPost,
         onSuccess: () => {
             setError(null)
-            router.push('/')
+            router.push('/blog')
         },
         onError: (error) => {
             setError(error.message);

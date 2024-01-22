@@ -1,7 +1,7 @@
 import { getPost } from "@/api-routes/posts";
 import { Post } from "@/lib/type-collections";
 import { DeleteButton } from "./buttons";
-import * as Styles from '@/app/[id]/Styles.ShowSinglePost'
+import * as Styles from '@/app/blog/[id]/Styles.ShowSinglePost'
 import { format } from "date-fns";
 
 const ShowSinglePost = async ({ params } : { params: { id: string } } ) => {    

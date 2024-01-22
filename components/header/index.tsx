@@ -5,7 +5,7 @@ import Link from 'next/link'
 const Header = () => {
     return (
         <Styles.Header>
-            <Styles.Title>NextBlog</Styles.Title>
+            <Styles.Logo href='/'>NextBlog</Styles.Logo>
             <Link href='/login'>
                 <Button $primary>Login</Button>
             </Link>
