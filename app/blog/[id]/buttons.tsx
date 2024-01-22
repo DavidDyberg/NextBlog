@@ -10,8 +10,22 @@ const DeletePost = styled.button`
 	border: none;
 	cursor: pointer;
     position: absolute;
-    bottom: 10px;
+    bottom: 15px;
     right: 10px;
+
+    &:hover {
+        color: red;
+    }
+
+    @media (max-width: 900px) {
+        bottom: 35px;
+        right: 10px;
+    }
+
+    @media (max-width: 500px) {
+        bottom: 30px;
+        right: 0px;
+    }
 `
 
 export const DeleteButton = ({ id } : { id: string }) => {
@@ -24,7 +38,7 @@ export const DeleteButton = ({ id } : { id: string }) => {
             return console.log({ error, status })
         }
 
-        router.push('/')
+        router.push('/blog')
     }
 
    return(

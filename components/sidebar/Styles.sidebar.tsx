@@ -20,29 +20,22 @@ export const SidebarContainer = styled.div`
     }
 
     @media (max-width: 500px) {
-        gap: 1px;
+        gap: 5px;
+        background: none;
     }
 `;
 
-export const SidebarItem = styled(Button)`
+export const SidebarItem = styled.button`
   font-size: 16px;
   margin: 0;
   width: 100%;
   border: none;
   cursor: pointer;
-  background-color: lightgray;
+  background-color: #5F9EA0;
   color: white;
+  padding: 5px 20px;
 
-  ${({ $primary }) =>
-    $primary &&
-    `
-    background: #5F9EA0;
-    color: white;
-    border: 2px solid #5F9EA0;
-    &:hover {
-      padding: 6px 21px;
-    }
-  `}    
+  
 
 @media (max-width:500px) {
         font-size: 14px;
