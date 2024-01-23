@@ -4,7 +4,7 @@ import { format } from "date-fns";
 
 const ShowPosts = ({ post }: {post: Post}) => {
 
-    const currentDate = format(new Date(post.created_at), 'MMMM do yyyy, h:mm:ss a');
+    const currentDate = format(new Date(post.created_at), 'MMMM d, yyyy');
 
     return (
         <Styles.PostLink href={'/blog/' + post.id}>

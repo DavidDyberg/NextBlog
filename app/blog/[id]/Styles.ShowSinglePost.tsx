@@ -5,6 +5,7 @@ import { Pencil } from 'lucide-react';
 export const SinglePostContainer = styled.div`
     display: flex;
     flex-direction: column;
+    margin-left: 40px;
 
     @media (max-width: 900px) {
         margin: 20px;
@@ -12,7 +13,9 @@ export const SinglePostContainer = styled.div`
 `
 
 export const Title = styled.h2`
-
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 `
 
 export const BodyText = styled.p`
@@ -45,9 +48,7 @@ export const Date = styled.p`
 `
 
 export const EditIcon = styled(Pencil)`
-    position: absolute;
-    top: 15px;
-    right: 15px;
+    margin-right: 10px;
     color: black;
 
     &:hover {

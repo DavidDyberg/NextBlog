@@ -1,6 +1,5 @@
 'use client'
 import { getPost } from "@/api-routes/posts";
-import { Post } from "@/lib/type-collections";
 import { DeleteButton } from "./buttons";
 import * as Styles from '@/app/blog/[id]/Styles.ShowSinglePost'
 import { format } from "date-fns";
@@ -22,24 +21,30 @@ const ShowSinglePost = ({ params } : { params: { id: string } } ) => {
     let currentDate: string | null = null;
 
     if (post?.created_at) {
-      currentDate = format(new Date(post.created_at), 'MMMM do yyyy, h:mm:ss a');
+      currentDate = format(new Date(post.created_at), 'MMMM d, yyyy' );
     }
 
     return(
         <Styles.SinglePostContainer>
+            
             <Styles.Title>
                 {post?.title}
+                <Link href={'/blog/' + id + '/edit'}><Styles.EditIcon /></Link>
             </Styles.Title>
+            
 
             <Styles.BodyText>
                 {post?.body}
             </Styles.BodyText>
+
             <Styles.CreatedAtWrapper>
-                <Styles.CreatedAt>Created at:</Styles.CreatedAt> 
+                <Styles.CreatedAt>Created at:</Styles.CreatedAt>
                 <Styles.Date>{currentDate}</Styles.Date>
             </Styles.CreatedAtWrapper>
-            <Link href={'/blog/' + id + '/edit'}><Styles.EditIcon></Styles.EditIcon></Link>
+
             <DeleteButton id={id}/>
+            
+            
         </Styles.SinglePostContainer>
     )
 }

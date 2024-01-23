@@ -5,7 +5,7 @@ import { Button } from "@/styles/button";
 
 export const SidebarContainer = styled.div`
   width: 150px;
-  height: 100%;
+  min-height: 60vh;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -16,7 +16,7 @@ export const SidebarContainer = styled.div`
         display: flex;
         flex-direction: row;
         width: 100%;
-        height: auto;
+        min-height: 20px;
     }
 
     @media (max-width: 500px) {

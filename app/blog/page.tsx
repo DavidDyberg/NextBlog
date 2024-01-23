@@ -1,13 +1,19 @@
 'use client'
 import styled from "styled-components"
-import supabase from "@/lib/supabase-client"
-import type { Post } from "@/lib/type-collections"
 import ShowPosts from "@/components/showPosts"
 import { useQuery } from "@tanstack/react-query"
 import { getAllPosts } from "@/api-routes/posts"
 
 const BlogTitle = styled.h1`
   margin-left: 10px;
+`
+
+const Main = styled.main`
+  margin-left: 40px;
+
+  @media (max-width: 900px) {
+        margin:0;
+    }
 `
 
 export default function Blog() {
@@ -19,11 +25,11 @@ export default function Blog() {
   if(isLoading) return <div>...loading</div>
 
   return (
-    <main> 
+    <Main> 
         <BlogTitle>Blog</BlogTitle>
         {posts?.map((post) => (
           <ShowPosts key={post.id} post={post} />
         ))}
-    </main>
+    </Main>
   )
 }

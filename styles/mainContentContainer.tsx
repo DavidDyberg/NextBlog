@@ -10,10 +10,10 @@ export const PageContainer = styled.div`
 
 export const MainContentContainer = styled.div`
     border: 1px solid black;
-    height: 100%;
+    min-height: 60vh;
     margin: 50px;
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 0fr 1fr;
     border-radius: 3px;
     box-shadow: 10px gray;
     position: relative;
