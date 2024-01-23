@@ -6,43 +6,36 @@ import { Button } from '@/styles/button'
 import { useMutation } from '@tanstack/react-query'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { FormEvent, useRef } from 'react'
 
 export default function EditPost ({ params } : { params: { id: string } } ) {
-    const [title, setTitle] = useState<string>()
-    const [body, setBody] = useState<string>()
-    const [error, setError] = useState<any>(null)
-
     const router = useRouter()
+    const titleRef = useRef<HTMLInputElement>(null)
+    const bodyRef = useRef<HTMLInputElement>(null)
 
     const { id } = params
 
-    const editPostMutation = useMutation({
-        mutationKey: ['editPost'],
-        mutationFn: editPost,
+    const {mutate, error, status} = useMutation({
+        mutationKey:['EditPostMutation'],
+        mutationFn:editPost,
         onSuccess: () => {
-            setError(null)
-            router.push('/blog/')
-        },
-        onError: (error) => {
-            setError(error.message);
-          },
+            router.push('/blog/' + id)
+        }
     })
 
-    const handleSubmit = async (e: any) => {
+    function handleSubmit(e: FormEvent) {
         e.preventDefault()
 
-        if (!title || !body) {
-            setError('Fill in all the fields')
-            return;
-        }
-        
-        editPostMutation.mutate({title, body, id})
+        mutate({
+            title: titleRef.current!.value,
+            body: bodyRef.current!.value,
+            id,
+        })
     }
 
     return(
         <div>
-            
+            {status === "error" && JSON.stringify(error)}
             <Styles.Title>
                 <Link href={'/blog/' + id}><Styles.BackIcon/></Link>
                 Edit Post
@@ -52,19 +45,16 @@ export default function EditPost ({ params } : { params: { id: string } } ) {
                 <Styles.Input 
                     type="text"
                     id="title"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
+                    ref={titleRef}
                 />
                 <label htmlFor="body">Body:</label>
                 <Styles.Input 
                     type="text"
                     id="body"
-                    value={body}
-                    onChange={(e) => setBody(e.target.value)}
+                    ref={bodyRef}
                 />
 
                 <Button>Edit</Button>
-
             </Styles.Form>
         </div>
     )
