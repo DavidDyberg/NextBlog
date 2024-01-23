@@ -7,14 +7,8 @@ export const getAllPosts = async () => {
       .select()
       .order('created_at', { ascending: false });
   
-    //if (error) {
-    //  throw new Error('Error fetching posts');
-    //}
-  
-    return data;
+      return data;
   };
-
-
 
   export const createPost = async ({title, body} : {title:string, body:string}) => {
     const newPost = ({title, body})

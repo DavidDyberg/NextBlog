@@ -2,62 +2,51 @@
 
 import { useRouter } from "next/navigation"
 import { Button } from "@/styles/button"
-import { useState } from "react"
+import { FormEvent, useRef } from "react"
 import * as Styles from '@/app/create-post/Styles.createPost'
 import { createPost } from "@/api-routes/posts"
 import { useMutation } from "@tanstack/react-query"
 
 export default function CreatePost () {
-    const [title, setTitle] = useState<string>()
-    const [body, setBody] = useState<string>()
-    const [error, setError] = useState<any>(null)
-
     const router = useRouter()
+    const titleRef = useRef<HTMLInputElement>(null)
+    const bodyRef = useRef<HTMLInputElement>(null)
 
-    const createPostMutation = useMutation({
-        mutationFn: createPost,
+    const {mutate, error, status} = useMutation({
+        mutationKey:['CreatePostMutation'],
+        mutationFn:createPost,
         onSuccess: () => {
-            setError(null)
             router.push('/blog')
-        },
-        onError: (error) => {
-            setError(error.message);
-          },
+        }
     })
 
-    const handleSubmit = async (e: any) => {
+    function handleSubmit(e: FormEvent) {
         e.preventDefault()
 
-        if (!title || !body) {
-            setError('Please fill in all the fields')
-            return;
-        }
-        
-        createPostMutation.mutate({title, body})
+        mutate({
+            title: titleRef.current!.value,
+            body: bodyRef.current!.value,
+        })
     }
-
+    
     return (
         <div>
+            {status === "error" && JSON.stringify(error)}
             <Styles.Title>Create Post</Styles.Title>
             <Styles.Form onSubmit={handleSubmit}>
                 <label htmlFor="title">Title:</label>
                 <Styles.Input 
                     type="text"
                     id="title"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
+                    ref={titleRef}
                 />
                 <label htmlFor="body">Body:</label>
                 <Styles.Input 
                     type="text"
                     id="body"
-                    value={body}
-                    onChange={(e) => setBody(e.target.value)}
+                    ref={bodyRef}
                 />
-
                 <Button>Create Post</Button>
-
-                {error && <Styles.ErrorMessage>{error}</Styles.ErrorMessage>}
             </Styles.Form>
         </div>
     )

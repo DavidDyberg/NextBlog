@@ -1,20 +1,29 @@
+'use client'
 import { getPost } from "@/api-routes/posts";
 import { Post } from "@/lib/type-collections";
 import { DeleteButton } from "./buttons";
 import * as Styles from '@/app/blog/[id]/Styles.ShowSinglePost'
 import { format } from "date-fns";
 import Link from "next/link";
+import { useQuery } from "@tanstack/react-query";
 
-const ShowSinglePost = async ({ params } : { params: { id: string } } ) => {    
+const ShowSinglePost = ({ params } : { params: { id: string } } ) => {    
     const { id } = params
 
-    let post: Post | null = null
+    const {data: post, isLoading, error} = useQuery({
+        queryKey:['ShowSinglePost', parseInt(id!)],
+        queryFn:() => getPost(id!),
+    })
 
-    post = await getPost(id)
+    
+    if (isLoading) return <div>Loading...</div>;
+    if (error) return <div>Error loading post</div>;
 
-    if (!post) return <div>No post found</div>
+    let currentDate: string | null = null;
 
-    let currentDate = format(new Date(post.created_at), 'MMMM do yyyy, h:mm:ss a');
+    if (post?.created_at) {
+      currentDate = format(new Date(post.created_at), 'MMMM do yyyy, h:mm:ss a');
+    }
 
     return(
         <Styles.SinglePostContainer>
