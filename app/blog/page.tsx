@@ -17,12 +17,13 @@ const Main = styled.main`
 `
 
 export default function Blog() {
-  const { data: posts, isLoading } = useQuery({
+  const { data: posts, isLoading, isError } = useQuery({
     queryKey: ['ShowAllPostsQuery'],
     queryFn: getAllPosts
   })
 
   if(isLoading) return <div>...loading</div>
+  if(isError) return <div>Error fetching posts</div>
 
   return (
     <Main> 
