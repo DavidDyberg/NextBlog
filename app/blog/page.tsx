@@ -3,6 +3,7 @@ import styled from "styled-components"
 import ShowPosts from "@/components/showPosts"
 import { useQuery } from "@tanstack/react-query"
 import { getAllPosts } from "@/api-routes/posts"
+import { LoadingSpinner, LoadingSpinnerWrapper } from "@/components/loadingSpinner"
 
 const BlogTitle = styled.h1`
   margin-left: 10px;
@@ -16,14 +17,19 @@ const Main = styled.main`
     }
 `
 
+const ErrorMessage = styled.p`
+  color: red;
+  margin-left: 10px;
+`
+
 export default function Blog() {
   const { data: posts, isLoading, isError } = useQuery({
     queryKey: ['ShowAllPostsQuery'],
     queryFn: getAllPosts
   })
 
-  if(isLoading) return <div>...loading</div>
-  if(isError) return <div>Error fetching posts</div>
+  if(isLoading) return <LoadingSpinnerWrapper><LoadingSpinner height={80} width={80} color="black"/></LoadingSpinnerWrapper> 
+  if(isError) return <ErrorMessage>Error loading posts</ErrorMessage>
 
   return (
     <Main> 
